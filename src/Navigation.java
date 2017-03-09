@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Navigation {
+public final class Navigation {
 	
-	private Scanner input = new Scanner(System.in);
+	private static Scanner input = new Scanner(System.in);
 	
-	public User setUser(User utilisateur){
+	public static User setUser(User utilisateur){
 		//setter to put an another user
 		
 		System.out.println("Renseigner votre nom : ");
@@ -22,7 +22,7 @@ public class Navigation {
 		return utilisateur;
 		
 	}
-	public int displayMenu(){
+	public static int displayMenu(){
 		//display the general menu		
 		
 		System.out.println("Choisissez :");
@@ -41,7 +41,7 @@ public class Navigation {
 		return menuItem;
 	}
 	
-	public boolean displayListUsers(ArrayList<User> listUsers, User user){
+	public static boolean displayListUsers(ArrayList<User> listUsers, User user){
 		//display the list of users
 		
 		String choice = new String();
@@ -61,7 +61,7 @@ public class Navigation {
 		return false;
 	}
 	
-	public boolean carryOn(){
+	public static boolean carryOn(){
 		//method to know if you have an another user to save
 		
 		String question = new String();

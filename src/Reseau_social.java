@@ -8,12 +8,11 @@ public class Reseau_social {
 		
 		ArrayList<User> listUsers = new ArrayList<User>();
 		
-		Navigation navigation = new Navigation();
 		User firstUser = new User();
-		firstUser = navigation.setUser(firstUser);
+		firstUser = Navigation.setUser(firstUser);
 		
 		while(carryOnMenu){			
-			switch(navigation.displayMenu()){
+			switch(Navigation.displayMenu()){
 				case 1:
 					//display profile 
 					System.out.println(firstUser.displayProfil());
@@ -40,7 +39,7 @@ public class Reseau_social {
 					
 				case 4:
 					//add a friend
-					navigation.displayListUsers(listUsers, firstUser);
+					Navigation.displayListUsers(listUsers, firstUser);
 					break;
 					
 				case 5:
@@ -62,10 +61,10 @@ public class Reseau_social {
 					while(carryOnSaveUser){
 						
 						User newUser = new User();
-						newUser = navigation.setUser(newUser);						
+						newUser = Navigation.setUser(newUser);						
 						listUsers.add(newUser);
 						
-						carryOnSaveUser = navigation.carryOn();
+						carryOnSaveUser = Navigation.carryOn();
 					}
 					break;
 				case 7:
@@ -81,7 +80,7 @@ public class Reseau_social {
 					break;
 				case 8:
 					//modify an user
-					navigation.setUser(firstUser);
+					Navigation.setUser(firstUser);
 					break;
 					
 				case 10:
