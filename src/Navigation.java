@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public final class Navigation {
@@ -44,6 +45,7 @@ public final class Navigation {
 	public static int displayMenu(){
 		
 		//display the general menu		
+		int menuItem;
 		
 		System.out.println("Choisissez :");
 		System.out.println("1. Afficher votre profil");
@@ -56,8 +58,13 @@ public final class Navigation {
 		System.out.println("8. Modfication du profil");
 		System.out.println("10. Quitter");
 		
-		int menuItem = input.nextInt();
+		try {
+			menuItem = input.nextInt();
+		}catch(Exception e){
+			menuItem = 100;
+		}
 		input.nextLine(); // to enable to save another user after the menu
+		
 		return menuItem;
 	}
 	
