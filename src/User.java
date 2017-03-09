@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class User {
-	String name = new String();
-	String first_name = new String();
-	int age;
-	ArrayList<Message> listMessage = new ArrayList<Message>(); 
-	ArrayList<User> listFriends = new ArrayList<User>();
+	private String name = new String();
+	private String first_name = new String();
+	private int age;
+	private ArrayList<Message> listMessage = new ArrayList<Message>(); 
+	private ArrayList<User> listFriends = new ArrayList<User>();
 	
 	/**
 	 * @return listFriends

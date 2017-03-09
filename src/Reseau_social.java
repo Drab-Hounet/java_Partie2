@@ -42,7 +42,7 @@ public class Reseau_social {
 					
 				case 4:
 					//add a friend
-					if(!listUsers.isEmpty() && (firstUser.listFriends.size() != listUsers.size())){
+					if(!listUsers.isEmpty() && (firstUser.getListFriends().size() != listUsers.size())){
 						Navigation.displayAndSaveUsers(listUsers, firstUser);
 					}else{
 						System.out.println("demande d'ami impossible");

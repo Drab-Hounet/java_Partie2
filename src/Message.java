@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Message {
 	
-	String content;
+	private String content;
 	private Scanner input = new Scanner(System.in);
 
 	/**

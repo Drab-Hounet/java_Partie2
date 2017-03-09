@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public final class Navigation {
@@ -71,11 +70,10 @@ public final class Navigation {
 	public static boolean displayAndSaveUsers(ArrayList<User> listUsers, User user){
 		
 		//display the list of users
-		
 		String choice = new String();
 		
 		for(User userOne : listUsers){
-			if (!user.listFriends.contains(userOne)){
+			if (!user.getListFriends().contains(userOne)){
 				System.out.println(userOne.getName());	
 			}
 		}
