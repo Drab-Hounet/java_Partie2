@@ -6,7 +6,7 @@ public class Message {
 	private Scanner input = new Scanner(System.in);
 
 	/**
-	 * @return the message
+	 * @return the content of the message
 	 */
 	public String getContent() {
 		return content;
