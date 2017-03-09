@@ -68,7 +68,6 @@ public class Navigation {
 		System.out.println("Un autre utilisateur?(Y/N)");
 		question = input.nextLine();
 		return (question.equals("Y"))?true:false;
-		 
 	}
 
 	

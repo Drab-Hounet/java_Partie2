@@ -22,7 +22,7 @@ public class Reseau_social {
 				case 2:
 					//write a message
 					Message message = new Message();
-					message.setMessage();
+					message.setContent();
 					firstUser.addMessage(message);
 					break;
 				
@@ -79,6 +79,11 @@ public class Reseau_social {
 					}
 					
 					break;
+				case 8:
+					//modify an user
+					navigation.setUser(firstUser);
+					break;
+					
 				case 10:
 					//end of program
 					carryOnMenu = false;

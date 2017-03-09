@@ -7,15 +7,23 @@ public class User {
 	ArrayList<Message> listMessage = new ArrayList<Message>(); 
 	ArrayList<User> listFriends = new ArrayList<User>();
 	
-	
+	/**
+	 * @return listFriends
+	 */
 	public ArrayList<User> getListFriends() {
 		return listFriends;
 	}
 
+	/**
+	 * @param friend to add in listFriends
+	 */
 	public void addFriends (User friend) {
 		this.listFriends.add(friend);
 	}
 	
+	/**
+	 * @return listMessage
+	 */
 	public ArrayList<Message> getListMessage() {
 		return listMessage;
 	}
@@ -48,10 +56,16 @@ public class User {
 		this.age = age;
 	}
 	
+	/**
+	 * @return all attributes toString
+	 */
 	public String displayProfil(){
 		return this.name + " " + this.first_name + " age : " + this.age + " ans";
 	}
 	
+	/**
+	 * @return name
+	 */
 	public String getName(){
 		return this.name;
 	}

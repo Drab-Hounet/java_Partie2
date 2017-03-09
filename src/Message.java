@@ -11,8 +11,11 @@ public class Message {
 	public String getContent() {
 		return content;
 	}
-
-	public void setMessage() {
+	
+	/**
+	 * set the message with Scanner
+	 */
+	public void setContent() {
 		System.out.println("Taper votre message : ");		
 		this.content = input.nextLine();
 	}
