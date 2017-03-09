@@ -29,10 +29,10 @@ public class User {
 	}
 
 	/**
-	 * @param listMessage the listMessage to set
+	 * @param listMessage the message to set
 	 */
-	public void addMessage(Message listMessage) {
-		this.listMessage.add(listMessage);
+	public void addMessage(Message message) {
+		this.listMessage.add(message);
 	}
 
 	/**

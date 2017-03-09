@@ -5,11 +5,29 @@ public final class Navigation {
 	
 	private static Scanner input = new Scanner(System.in);
 	
-	public static User setUser(User utilisateur){
+	public static User setUser(User utilisateur, ArrayList<User> listUsers){
 		//setter to put an another user
 		
-		System.out.println("Renseigner votre nom : ");
-		utilisateur.setName(input.nextLine());
+		//verify if name is unique
+		boolean unique = true; 
+		String name = new String();
+		
+		while(unique){
+			int compt = 0;
+			System.out.println("Renseigner votre nom : ");
+			name = input.nextLine();
+			for(User userOne : listUsers){
+				if(userOne.getName().equals(name)){
+					compt++;
+				}
+			}
+			if(compt == 0){
+				utilisateur.setName(name);
+				unique = false;
+			}else{
+				System.out.println("Attention " + name + " existe déjà!");
+			}
+		}
 		
 		System.out.println("Renseigner votre prénom : ");
 		utilisateur.setFirst_name(input.nextLine());
@@ -22,7 +40,9 @@ public final class Navigation {
 		return utilisateur;
 		
 	}
+	
 	public static int displayMenu(){
+		
 		//display the general menu		
 		
 		System.out.println("Choisissez :");
@@ -41,22 +61,28 @@ public final class Navigation {
 		return menuItem;
 	}
 	
-	public static boolean displayListUsers(ArrayList<User> listUsers, User user){
+	public static boolean displayAndSaveUsers(ArrayList<User> listUsers, User user){
+		
 		//display the list of users
 		
 		String choice = new String();
-		for (int i = 0 ; i < listUsers.size() ; i++ ){
-			System.out.println(listUsers.get(i).getName());
+		
+		for(User userOne : listUsers){
+			if (!user.listFriends.contains(userOne)){
+				System.out.println(userOne.getName());	
+			}
 		}
+		
 		System.out.println("Choisissez votre ami (nom) :");
 		choice = input.nextLine();
-		for (int i = 0 ; i < listUsers.size() ; i++ ){
-			if (choice.equals(listUsers.get(i).getName())){
-				user.addFriends(listUsers.get(i));
+		for (User userOne : listUsers){
+			if (choice.equals(userOne.getName())){
+				user.addFriends(userOne);
 				System.out.println("Utilisateur trouvé et enregistré!");
 				return true;
 			}
 		}
+				
 		System.out.println("Utilisateur non trouvé !");	
 		return false;
 	}
