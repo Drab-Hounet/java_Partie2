@@ -11,7 +11,8 @@ public class NavGeneral {
 			
 		boolean carryOnMenu = true;
 		
-		User firstUser = new User();
+		User firstUser = Menu.menuSetModOrNot(); 
+		
 		Menu.menuSetUser(firstUser);
 		
 		while(carryOnMenu){
@@ -24,7 +25,8 @@ public class NavGeneral {
 					
 				case 2:
 					//modify an user
-					Menu.menuSetUser(firstUser);					
+					firstUser.setProfil();
+					//Menu.menuSetUser(firstUser);					
 					break;
 					
 				case 3:
@@ -56,9 +58,7 @@ public class NavGeneral {
 				case 7:
 					//display all users
 					if(!group.getListUsers().isEmpty()){
-						for(User userOne : group.getListUsers()){
-							System.out.println(userOne.displayProfil());
-						}
+						group.getEachUser();
 					}else{
 						System.out.println("-------> aucun utilisateur");
 					}
@@ -67,6 +67,11 @@ public class NavGeneral {
 				case 8:
 					//delete a message from the user
 					firstUser.deleteMessage();
+					break;
+					
+				case 9:
+					//delete an user
+					firstUser.deleteUser(group);
 					break;
 					
 				case 10:

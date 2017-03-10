@@ -12,12 +12,14 @@ public class GroupUser {
 		return this.listUsers;
 	}
 	
-	public void getEachUser() {
+	public boolean getEachUser() {
 		if(!this.listUsers.isEmpty()){
-			for (User userOne : this.listUsers){
-				System.out.println(userOne.displayProfil());
+			for (int i = 0 ; i < this.listUsers.size(); i++){
+				System.out.println((i+1) + ". " + listUsers.get(i).displayProfil());	
 			}
+			return true;
 		}
+		return false;
 	}
 
 	/**

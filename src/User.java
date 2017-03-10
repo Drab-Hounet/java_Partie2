@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class User {
 	
-	private String name = new String();
-	private String first_name = new String();
-	private int age;
-	private ArrayList<Message> listMessage = new ArrayList<Message>(); 
-	private ArrayList<User> listFriends = new ArrayList<User>();
+	protected String name = new String();
+	protected String first_name = new String();
+	protected int age;
+	protected ArrayList<Message> listMessage = new ArrayList<Message>(); 
+	protected ArrayList<User> listFriends = new ArrayList<User>();
 	
 	public User(){
 	}
@@ -16,6 +16,7 @@ public class User {
 		first_name = pFirst_name;
 		age = pAge;
 	}
+	//-------------------------------------------FRIENDS-------------------------------------------
 	
 	/**
 	 * @return listFriends
@@ -41,6 +42,8 @@ public class User {
 		this.listFriends.add(friend);
 	}
 	
+	//-------------------------------------------MESSAGE-------------------------------------------
+	
 	/**
 	 * @return listMessage
 	 */
@@ -63,17 +66,22 @@ public class User {
 		this.listMessage.add(message);
 	}
 	
-	
 	public void deleteMessage(){
 		if(this.getListMessage()){
 			try{
-				this.listMessage.remove(Menu.menuDeleteMessage(this.listMessage)-1);
+				this.listMessage.remove(Menu.menuDelete(this.listMessage, "Quel message souhaitez vous effacez ? ")-1);
 			}catch(Exception e){
-				System.out.println("Aucun message à supprimer");
+				System.out.println("Aucun utilisateur à supprimer");
 			}
 		}
 	}
 
+	//-------------------------------------------USER----------------------------------------------
+	
+	public void setProfil(){
+		Menu.menuSetUser(this);
+	}
+	
 	/**
 	 * @param name the name to set
 	 */
@@ -101,7 +109,7 @@ public class User {
 	public String displayProfil(){
 		return this.name + " " + this.first_name + " age : " + this.age + " ans";
 	}
-	
+
 	/**
 	 * @return name
 	 */
@@ -123,5 +131,7 @@ public class User {
 		return this.age;
 	}
 	
-	
+	public void deleteUser(GroupUser group){
+		System.out.println("aucune autorisation");
+	}
 }

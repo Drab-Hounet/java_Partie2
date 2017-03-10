@@ -10,6 +10,25 @@ public final class Menu {
 	
 	private static Scanner input = new Scanner(System.in); 
 	
+	public static User menuSetModOrNot(){
+		String menuItem;
+		System.out.println("Etes vous moderateur ? (Y/N)");
+		try {
+			menuItem = input.nextLine();
+			}catch(Exception e){
+				menuItem = "N";
+			}
+		if (menuItem.equals("Y")){
+			Moderator mod = new Moderator();
+			System.out.println("Création du modérateur");
+			return mod;
+		}else{
+			User user = new User();
+			System.out.println("Création de l'utilisateur");
+			return user;
+		}
+	}	
+	
 	public static int menuGeneral(){
 		//display the general menu		
 		int menuItem;
@@ -22,6 +41,7 @@ public final class Menu {
 		System.out.println("6. Afficher mes amis");
 		System.out.println("7. Lister tous les utilisateurs");
 		System.out.println("8. Effacer un messages");
+		System.out.println("9. Effacer un utilisateur");
 		System.out.println("10. Quitter");
 		
 		try {
@@ -57,7 +77,43 @@ public final class Menu {
  
 		user.setAge(input.nextInt());		
 		
-		//a faire -> la vérification du nom...
+	}
+	
+	public static void menuSetProfile(Moderator moderator) {
+		// TODO Auto-generated method stub
+		
+		//name
+		if(moderator.getName().isEmpty()){
+			System.out.println("Renseigner votre nom : ");
+		}else{
+			System.out.println("Modifier votre nom " + moderator.getName() + " ?");
+		}
+		moderator.setName(input.nextLine());
+		
+		//first_name
+		if(moderator.getFirst_name().isEmpty()){
+			System.out.println("Renseigner votre prénom : ");
+		}else{
+			System.out.println("Modifier votre prénom " + moderator.getFirst_name() + " ?");
+		}
+		moderator.setFirst_name(input.nextLine());
+		
+		//age
+		if(moderator.getAge() > 0){
+			System.out.println("Modifier votre age de " + moderator.getAge() + " ans ?");
+		}else{
+			System.out.println("Renseigner votre age : ");
+		}
+		moderator.setAge(input.nextInt());	
+		
+		//level's moderation
+		if(moderator.getLevel_moderator() > 0){
+			System.out.println("Modifier votre niveau de modération (" + moderator.getLevel_moderator() + ")");
+		}else{
+			System.out.println("Renseigner votre niveau de modération : ");
+		}
+		moderator.setLevel_moderator(input.nextInt());	
+		
 	}
 		
 	public static void saveFriends(ArrayList<User> listUsers, User user){
@@ -82,10 +138,10 @@ public final class Menu {
 		System.out.println("Utilisateur non trouvé !");	
 	}
 	
-	public static int menuDeleteMessage(ArrayList<Message> listMessage){
+	public static int menuDelete(ArrayList<Message> listMessage, String message){
 		int item = 0;
 		
-		System.out.println("Quelle message souhaitez vous effacez ? ");
+		System.out.println(message);
 		try {
 			item = input.nextInt();
 			}catch(Exception e){
@@ -93,6 +149,10 @@ public final class Menu {
 			}
 		return item;
 	}
+	
+	
+
+
 	
 	
 	
