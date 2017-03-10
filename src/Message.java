@@ -19,4 +19,6 @@ public class Message {
 		System.out.println("Taper votre message : ");		
 		this.content = input.nextLine();
 	}
+	
+	
 }
