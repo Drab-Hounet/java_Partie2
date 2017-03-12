@@ -12,14 +12,14 @@ public class GroupUser {
 		return this.listUsers;
 	}
 	
-	public boolean getEachUser() {
+	public void getEachUser() {
 		if(!this.listUsers.isEmpty()){
 			for (int i = 0 ; i < this.listUsers.size(); i++){
 				System.out.println((i+1) + ". " + listUsers.get(i).displayProfil());	
 			}
-			return true;
+		}else {
+			System.out.println("-------> aucun utilisateur");
 		}
-		return false;
 	}
 
 	/**
@@ -27,6 +27,12 @@ public class GroupUser {
 	 */
 	public void addUser(User user) {
 		this.listUsers.add(user);
+	}
+	
+	public void deleteUser(){
+		if(this.getListUsers().size() != 0){
+			this.getListUsers().remove(Menu.menuSelectUser(this, "Quel utilisateur souhaitez vous effacer?")-1);
+		}
 	}
 	
 }

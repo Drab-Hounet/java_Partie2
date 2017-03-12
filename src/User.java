@@ -5,6 +5,7 @@ public class User {
 	protected String name = new String();
 	protected String first_name = new String();
 	protected int age;
+	private int level_moderator = 0;
 	protected ArrayList<Message> listMessage = new ArrayList<Message>(); 
 	protected ArrayList<User> listFriends = new ArrayList<User>();
 	
@@ -39,7 +40,7 @@ public class User {
 	 * @param friend to add in listFriends
 	 */
 	public void addFriends (User friend) {
-		this.listFriends.add(friend);
+		this.listFriends.add(friend);		
 	}
 	
 	//-------------------------------------------MESSAGE-------------------------------------------
@@ -69,10 +70,12 @@ public class User {
 	public void deleteMessage(){
 		if(this.getListMessage()){
 			try{
-				this.listMessage.remove(Menu.menuDelete(this.listMessage, "Quel message souhaitez vous effacez ? ")-1);
+				this.listMessage.remove(Menu.menuDeleteMessage(this.listMessage, "Quel message souhaitez vous effacez ? ")-1);
+				System.out.println("message supprimé");
 			}catch(Exception e){
-				System.out.println("Aucun utilisateur à supprimer");
+				System.out.println("Aucun message à supprimer");
 			}
+			
 		}
 	}
 
@@ -130,8 +133,8 @@ public class User {
 	public int getAge(){
 		return this.age;
 	}
-	
-	public void deleteUser(GroupUser group){
-		System.out.println("aucune autorisation");
+
+	public int getLevel_moderator() {
+		return level_moderator;
 	}
 }

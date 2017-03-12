@@ -45,4 +45,8 @@ public class Moderator extends User {
 		Menu.menuSetProfile(this);
 	}
 	
+	public void deleteUser(GroupUser group){
+		System.out.println("aucune autorisation en cours");
+	}
+	
 }

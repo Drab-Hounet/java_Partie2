@@ -25,8 +25,7 @@ public class NavGeneral {
 					
 				case 2:
 					//modify an user
-					firstUser.setProfil();
-					//Menu.menuSetUser(firstUser);					
+					firstUser.setProfil();				
 					break;
 					
 				case 3:
@@ -43,8 +42,8 @@ public class NavGeneral {
 					
 				case 5:
 					//add a friend
-					if(!group.getListUsers().isEmpty() && (firstUser.getListFriends().size() != group.getListUsers().size())){
-						Menu.saveFriends(group.getListUsers(), firstUser);
+					if(firstUser.getListFriends().size() != group.getListUsers().size()){
+						Menu.saveFriends(group, firstUser);
 					}else{
 						System.out.println("demande d'ami impossible");
 					}
@@ -57,11 +56,7 @@ public class NavGeneral {
 					
 				case 7:
 					//display all users
-					if(!group.getListUsers().isEmpty()){
-						group.getEachUser();
-					}else{
-						System.out.println("-------> aucun utilisateur");
-					}
+					group.getEachUser();
 					break;
 				
 				case 8:
@@ -71,10 +66,27 @@ public class NavGeneral {
 					
 				case 9:
 					//delete an user
-					firstUser.deleteUser(group);
+					if (Menu.checkAccessAuthorized(firstUser.getLevel_moderator(), 2)){
+						group.getEachUser();
+						group.deleteUser();
+					}else{
+						System.out.println("aucune autorisation");
+					}
 					break;
-					
+				
 				case 10:
+					//delete any message
+					if (Menu.checkAccessAuthorized(firstUser.getLevel_moderator(), 1)){
+						group.getEachUser();
+						User userToDeleteMessage  = group.getListUsers().get(Menu.menuSelectUser(group, "Quel utilisateur souhaitez vous?")-1);
+						userToDeleteMessage.deleteMessage();
+					}else{
+						System.out.println("aucune autorisation");
+					}
+						
+					break;
+					 
+				case 20:
 					//end of program
 					carryOnMenu = false;
 					System.out.println("Programme terminé !");

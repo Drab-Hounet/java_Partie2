@@ -33,16 +33,17 @@ public final class Menu {
 		//display the general menu		
 		int menuItem;
 		System.out.println("Choisissez :");
-		System.out.println("1. Afficher votre profil");
-		System.out.println("2. Modifier votre profil");
-		System.out.println("3. Ecrire un message");
-		System.out.println("4. Afficher tous les messages");
-		System.out.println("5. Ajouter un ami");
-		System.out.println("6. Afficher mes amis");
-		System.out.println("7. Lister tous les utilisateurs");
-		System.out.println("8. Effacer un messages");
-		System.out.println("9. Effacer un utilisateur");
-		System.out.println("10. Quitter");
+		System.out.println("1. 	Afficher votre profil");
+		System.out.println("2. 	Modifier votre profil");
+		System.out.println("3. 	Ecrire un message");
+		System.out.println("4. 	Afficher tous les messages");
+		System.out.println("5. 	Ajouter un ami");
+		System.out.println("6. 	Afficher mes amis");
+		System.out.println("7. 	Lister tous les utilisateurs");
+		System.out.println("8. 	Effacer un messages");
+		System.out.println("9. 	Effacer un utilisateur(mode modérateur)");
+		System.out.println("10. 	Effacer un message (mode modérateur)");
+		System.out.println("20. 	Quitter");
 		
 		try {
 			menuItem = input.nextInt();
@@ -116,11 +117,11 @@ public final class Menu {
 		
 	}
 		
-	public static void saveFriends(ArrayList<User> listUsers, User user){
+	public static void saveFriends(GroupUser group, User user){
 		//display the list of users
 		String choice = new String();
 		
-		for(User userOne : listUsers){
+		for(User userOne : group.getListUsers()){
 			if (!user.getListFriends().contains(userOne)){
 				System.out.println(userOne.getName());	
 			}
@@ -128,7 +129,7 @@ public final class Menu {
 		
 		System.out.println("Choisissez votre ami (nom) :");
 		choice = input.nextLine();
-		for (User userOne : listUsers){
+		for (User userOne : group.getListUsers()){
 			if (choice.equals(userOne.getName())){
 				user.addFriends(userOne);
 				System.out.println("Utilisateur trouvé et enregistré!");
@@ -138,7 +139,7 @@ public final class Menu {
 		System.out.println("Utilisateur non trouvé !");	
 	}
 	
-	public static int menuDelete(ArrayList<Message> listMessage, String message){
+	public static int menuDeleteMessage(ArrayList<Message> listMessage, String message){
 		int item = 0;
 		
 		System.out.println(message);
@@ -150,14 +151,31 @@ public final class Menu {
 		return item;
 	}
 	
+	public static int menuSelectUser(GroupUser listUser, String message){
+		int item = listUser.getListUsers().size() + 1 ;
+		
+		while(item > listUser.getListUsers().size()){
+			System.out.println(message);
+			
+			try {
+				item = input.nextInt();
+				}catch(Exception e){
+					item = listUser.getListUsers().size() + 1 ;
+				}
+		}		
+		return item;
+	}
 	
+	public static boolean checkAccessAuthorized(int levelUser, int levelAccess ){
+		if (levelUser >= levelAccess){
+			return true;
+		}
+		
+		return false;
+	}
 
 
-	
-	
-	
-	
-	
+
 	
 	
 	
